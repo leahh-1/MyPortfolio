@@ -31,15 +31,48 @@
                 <span class="w-3 h-3 bg-accentSpark rounded-full animate-pulse"></span>
                 LEAH MARIE SANCHEZ
             </div>
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-8 text-sm font-medium text-zinc-400">
                 <a href="#top" class="hover:text-white transition">Home</a>
                 <a href="#expertise" class="hover:text-white transition">Expertise</a>
                 <a href="#projects" class="hover:text-white transition">Projects</a>
                 <a href="#about" class="hover:text-white transition">About</a>
             </div>
-            <a href="#" onclick="openResume()" class="text-xs uppercase tracking-wider font-bold border border-zinc-700 px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Resume</a>
+            <!-- Mobile Hamburger Button -->
+            <button id="hamburger" class="md:hidden text-zinc-400 hover:text-white transition" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <a href="#" onclick="openResume()" class="hidden md:block text-xs uppercase tracking-wider font-bold border border-zinc-700 px-4 py-2 rounded-full hover:bg-white hover:text-black transition">Resume</a>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2 pb-4">
+            <a href="#top" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Home</a>
+            <a href="#expertise" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Expertise</a>
+            <a href="#projects" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Projects</a>
+            <a href="#about" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">About</a>
+            <button onclick="openResume()" class="w-full text-left px-4 py-2 text-xs uppercase tracking-wider font-bold text-accentSpark hover:bg-zinc-900 rounded transition">Resume</button>
         </div>
     </nav>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        hamburger.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a, button');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 
     <header class="max-w-6xl mx-auto px-6 pt-20 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 space-y-6">
