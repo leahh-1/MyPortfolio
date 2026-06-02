@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee - Coffee Flight</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cart-styles.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="navbar">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Coffee Flight</a></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        <!-- Avatar and User Menu -->
+        <div class="user-menu">
+            <div class="avatar" id="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">Guest</span>
+                        <span class="user-email">Not logged in</span>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <a href="#" id="loginBtn" class="menu-item">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </a>
+                    <a href="#" id="signupBtn" class="menu-item">
+                        <i class="fas fa-user-plus"></i>
+                        Sign Up
+                    </a>
+                    <a href="#" id="logoutBtn" class="menu-item hidden">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Add to Cart Button (upper right corner) -->
+    <button class="floating-cart-btn">
+        <i class="fas fa-shopping-cart"></i> Cart
+        <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="coffee.html" class="active"><img src="coffee.png" alt=""> Coffee</a></li>
+                <li><a href="frappe.html"><img src="frappe.png" alt=""> Frappe</a></li>
+                <li><a href="smoothies.html"><img src="smoothie.png" alt=""> Smoothies</a></li>
+                <li><a href="milkshake.html"><img src="milkshake.png" alt=""> Milkshake</a></li>
+                <li><a href="soda.html"><img src="soda.png" alt=""> Soda</a></li>
+                <li><a href="pasta.html"><img src="pasta.png" alt=""> Pasta</a></li>
+                <li><a href="ricemeal.html"><img src="ricemeal.png" alt=""> Rice Meals</a></li>
+                <li><a href="waffles.html"><img src="waffle.png" alt=""> Waffles</a></li>
+                <li><a href="sandwich.html"><img src="sandwich.png" alt=""> Sandwiches</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1>Coffee Products</h1>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="americano.png" alt="Americano">
+                    <h2>Americano</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Americano')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+                <div class="product-card">
+                    <img src="latte.png" alt="Latte">
+                    <h2>Latte</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Latte')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+                <div class="product-card">
+                    <img src="cappuccino.png" alt="Cappuccino">
+                    <h2>Cappuccino</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Cappuccino')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+                <div class="product-card">
+                    <img src="spanishlatte.png" alt="Spanish Latte">
+                    <h2>Spanish Latte</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Spanish Latte')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+                <div class="product-card">
+                    <img src="caramelmacchiato.png" alt="Caramel Macchiato">
+                    <h2>Caramel Macchiato</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Caramel Macchiato')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+                <div class="product-card">
+                    <img src="saltedcaramel.png" alt="Salted Caramel">
+                    <h2>Salted Caramel</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Salted Caramel')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+                <div class="product-card">
+                    <img src="mocha.png" alt="Mocha">
+                    <h2>Mocha</h2>
+                    <button class="add-to-cart-btn" onclick="showTemperatureModal('Mocha')">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Size and Temperature Selection Modal -->
+    <div id="temperatureModal" class="modal">
+        <div class="modal-content">
+            <span class="close-temp close">&times;</span>
+            <h2>Customize Your Drink</h2>
+            <div id="sizeSection" class="customization-section">
+                <h3>Select Size</h3>
+                <div class="size-options">
+                    <button class="size-btn" data-size="Small">
+                        <i class="fas fa-coffee"></i>
+                        <span>Small</span>
+                        <small>12 oz</small>
+                    </button>
+                    <button class="size-btn" data-size="Medium">
+                        <i class="fas fa-coffee"></i>
+                        <span>Medium</span>
+                        <small>16 oz</small>
+                    </button>
+                    <button class="size-btn" data-size="Large">
+                        <i class="fas fa-coffee"></i>
+                        <span>Large</span>
+                        <small>20 oz</small>
+                    </button>
+                </div>
+            </div>
+            <div id="temperatureSection" class="customization-section" style="display: none;">
+                <h3>Select Coffee Type</h3>
+                <div class="temperature-options">
+                    <button class="temp-btn hot">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Hot</span>
+                    </button>
+                    <button class="temp-btn cold">
+                        <i class="fas fa-cube"></i>
+                        <span>Over-Ice</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-cart close">&times;</span>
+            <h2>My Picks <span id="cartCount">3 Items</span></h2>
+            <div class="cart-container">
+                <div id="cartItems">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+                <div class="cart-summary">
+                    <div class="summary-row total">
+                        <span>Total Price</span>
+                        <span id="totalPrice">₱0.00</span>
+                    </div>
+                    <div class="e-receipt">
+                        <h3>E-Receipt</h3>
+                        <div class="receipt-details">
+                            <div class="receipt-row">
+                                <span>Receipt No:</span>
+                                <span id="receiptNumber"></span>
+                            </div>
+                            <div class="receipt-row">
+                                <span>Date:</span>
+                                <span id="receiptDate"></span>
+                            </div>
+                            <div class="receipt-row">
+                                <span>Time:</span>
+                                <span id="receiptTime"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="view-receipt-btn" onclick="showReviewModal()">VIEW FULL E-RECEIPT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full E-Receipt Modal -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content receipt-modal">
+            <span class="close-receipt close">&times;</span>
+            <div class="full-receipt">
+                <div class="receipt-header">
+                    <h2>Coffee Flight</h2>
+                    <p>E-Receipt</p>
+                </div>
+                <div class="receipt-info">
+                    <div class="receipt-row">
+                        <span>Receipt No:</span>
+                        <span id="fullReceiptNumber"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Date:</span>
+                        <span id="fullReceiptDate"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Time:</span>
+                        <span id="fullReceiptTime"></span>
+                    </div>
+                </div>
+                <div class="receipt-items">
+                    <h3>Items</h3>
+                    <div id="receiptItemsList"></div>
+                </div>
+                <div class="receipt-total">
+                    <div class="receipt-row total">
+                        <span>Total Amount:</span>
+                        <span id="fullReceiptTotal"></span>
+                    </div>
+                </div>
+                <div class="receipt-footer">
+                    <p>Thank you for your order!<br>Please keep this receipt for your records.</p>
+                    <button class="feedback-btn" onclick="openFeedbackModal()">Send us your feedback!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content review-modal">
+            <span class="close-feedback close" onclick="closeFeedbackModal()">&times;</span>
+            <div class="review-form">
+                <h2>Customer Feedback</h2>
+                <div class="rating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                </div>
+                <div class="review-input">
+                    <textarea id="feedbackText" placeholder="Share your experience with us..."></textarea>
+                </div>
+                <button class="submit-review-btn" onclick="submitFeedback()">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- LOCATION -->
+        <div class="footer-section">
+            <h3 class="footer-heading">Location</h3>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <address class="location-info">
+                    69 S. Donesa St. Canumay West Valenzuela City
+                </address>
+            </div>
+            <div class="location-gallery">
+                <img src="classicloc.png" alt="Coffee Shop Location" class="location-image">
+            </div>
+        </div>
+  
+        <!-- QUICK LINKS -->
+        <div class="footer-section">
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+  
+        <!-- CONTACT -->
+        <div class="footer-section">
+            <h3 class="footer-heading">Contact Us</h3>
+            <ul class="contact-info">
+                <li><i class="fas fa-envelope"></i> <a href="mailto:coffeeflightph@gmail.com">coffeeflightph@gmail.com</a></li>
+                <li><i class="fas fa-phone"></i> <span>0966 077 6199</span></li>
+                <li><i class="fas fa-map-marker-alt"></i> <span>69 S. Donesa St. Canumay West Valenzuela City</span></li>
+            </ul>
+        </div>
+  
+  <!-- SOCIAL & HOURS -->
+        <div class="footer-section">
+            <h3 class="footer-heading">Follow Us</h3>
+            <div class="social-links">
+                <a href="#" class="social-circle" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-circle" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+            <div class="opening-hours">
+                <h4 class="footer-subheading">Opening Hours</h4>
+                <p>Monday - Sunday: 10am - 11pm</p>
+            </div>
+        </div>
+    </div>
+  
+    <div class="footer-content">
+        <center>
+            <p>Thank you for visiting!</p>
+            <p>Feel free to reach out via email: <a href="mailto:justinebaylen010@google.com">justinebaylen010@google.com</a></p>
+            <p>Copyright © 2025 Justine & Leah All rights reserved.</p>
+        </center>
+    </div>
+  </footer>
+
+    <script src="cart.js"></script>
+    <script src="login.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+    let feedbackRating = 0;
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function() {
+            feedbackRating = parseInt(this.getAttribute('data-rating'));
+            document.querySelectorAll('.star').forEach(s => {
+                s.style.color = parseInt(s.getAttribute('data-rating')) <= feedbackRating ? '#ffd700' : '#ddd';
+            });
+        });
+    });
+    function openFeedbackModal() {
+        document.getElementById('feedbackModal').style.display = 'block';
+        feedbackRating = 0;
+        document.getElementById('feedbackText').value = '';
+        document.querySelectorAll('.star').forEach(s => { s.style.color = '#ddd'; });
+    }
+    function closeFeedbackModal() {
+        document.getElementById('feedbackModal').style.display = 'none';
+    }
+    function submitFeedback() {
+        const text = document.getElementById('feedbackText').value;
+        if (feedbackRating === 0) { alert('Please select a rating.'); return; }
+        if (text.trim() === '') { alert('Please enter your feedback.'); return; }
+        alert('Thank you for your feedback!');
+        closeFeedbackModal();
+    }
+    </script>
+</body>
+</html>
