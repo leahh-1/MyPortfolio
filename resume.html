@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resume — Leah Marie Sanchez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darkBg text-zinc-100 antialiased">
+    <a href="#" onclick="closeAndReturn()" class="fixed top-4 left-4 z-50 px-4 py-2 bg-accentSpark text-black rounded-md font-semibold shadow">Back to Portfolio</a>
+    <div class="min-h-screen flex items-center justify-center p-6">
+        <div class="w-full max-w-4xl bg-cardBg border border-zinc-800 rounded-2xl p-6 text-center">
+            <h1 class="text-2xl font-bold text-white mb-4">OJT Resume</h1>
+            <div class="mb-6">
+                <img src="Resume.png" alt="OJT Resume" class="w-full h-auto rounded shadow-lg" />
+            </div>
+            <script>
+                function closeAndReturn() {
+                    try {
+                        if (window.opener && !window.opener.closed) {
+                            window.opener.focus();
+                        }
+                        window.close();
+                        // fallback: navigate back in this tab if close was blocked
+                        setTimeout(function() {
+                            if (!window.closed) window.location.href = 'index.html';
+                        }, 300);
+                    } catch (e) {
+                        window.location.href = 'index.html';
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
