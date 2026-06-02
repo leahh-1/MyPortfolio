@@ -33,10 +33,10 @@
             </div>
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-8 text-sm font-medium text-zinc-400">
-                <a href="#top" class="hover:text-white transition">Home</a>
-                <a href="#expertise" class="hover:text-white transition">Expertise</a>
-                <a href="#projects" class="hover:text-white transition">Projects</a>
-                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#top" data-section="top" class="nav-link hover:text-white transition">Home</a>
+                <a href="#expertise" data-section="expertise" class="nav-link hover:text-white transition">Expertise</a>
+                <a href="#projects" data-section="projects" class="nav-link hover:text-white transition">Projects</a>
+                <a href="#about" data-section="about" class="nav-link hover:text-white transition">About</a>
             </div>
             <!-- Mobile Hamburger Button -->
             <button id="hamburger" class="md:hidden text-zinc-400 hover:text-white transition" aria-label="Toggle menu">
@@ -48,10 +48,10 @@
         </div>
         <!-- Mobile Navigation Menu -->
         <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2 pb-4">
-            <a href="#top" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Home</a>
-            <a href="#expertise" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Expertise</a>
-            <a href="#projects" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Projects</a>
-            <a href="#about" class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">About</a>
+            <a href="#top" data-section="top" class="nav-link block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Home</a>
+            <a href="#expertise" data-section="expertise" class="nav-link block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Expertise</a>
+            <a href="#projects" data-section="projects" class="nav-link block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">Projects</a>
+            <a href="#about" data-section="about" class="nav-link block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-900 rounded transition">About</a>
             <button onclick="openResume()" class="w-full text-left px-4 py-2 text-xs uppercase tracking-wider font-bold text-accentSpark hover:bg-zinc-900 rounded transition">Resume</button>
         </div>
     </nav>
@@ -72,6 +72,37 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Active Section Highlighting
+        const sections = ['top', 'expertise', 'projects', 'about'];
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveNav() {
+            let currentSection = 'top';
+            
+            for (let section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 150) {
+                        currentSection = section;
+                    }
+                }
+            }
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-accentSpark', 'font-bold');
+                link.classList.add('text-zinc-400');
+                
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.remove('text-zinc-400');
+                    link.classList.add('text-accentSpark', 'font-bold');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav(); // Initialize on page load
     </script>
 
     <header class="max-w-6xl mx-auto px-6 pt-20 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
